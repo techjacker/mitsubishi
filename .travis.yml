@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - 0.4
+
+script: make test
+
+before_script:
+  - npm install -g grunt-cli
+  - npm install --dev
+
+matrix:
+  allow_failures:
+    - node_js: 0.2
+
+# SAUCE_USERNAME
+# SAUCE_ACCESS_KEY
+env:
+  global:
+  - secure: ! 'DeyrDTXTtIMy/KfgzxJLQL01DXgzlkverfVxrZB4PEondwBKRt/shIHEn0jORc+9mq36UTEIaW7r5153jooud+LdRkZ7XAgoA+SStcG6vMors5nZGRrzbnsnjN0TutkkJ8/+ksqbzMARlOU+tJX9hJYw5P+9SQcRsZ7z8uyOREE='
+  - secure: ! 'Tv8cFH3SJdSSOsF3KO1D6ZP50Ck51y3Kvb9s8se4+bmjsip1ec2SMk2jK1uACK7JEfJq98krSTmIZjLYpNojESbtvFmbpk06hTSjkEeARjW/egRznvTcYvAuphtoLoyNZiSe6WdexyddECRQbRG1J7PxAhQfuqRcngwRFqkB2cI='

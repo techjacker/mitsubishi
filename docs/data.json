@@ -1,0 +1,293 @@
+{
+    "project": {
+        "name": "mitsubishi",
+        "description": "Extend function inspired by YUI, coffeescript, typescript and google closure inheritance patterns.",
+        "version": "0.0.1",
+        "url": "git@github.com:techjacker/mitsubishi.git"
+    },
+    "files": {
+        "lib/instance.js": {
+            "name": "lib/instance.js",
+            "modules": {},
+            "classes": {
+                "mixinInstance": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/main.js": {
+            "name": "lib/main.js",
+            "modules": {},
+            "classes": {
+                "mitsubishi": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/proto.js": {
+            "name": "lib/proto.js",
+            "modules": {},
+            "classes": {
+                "mixinProto": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "mixinInstance": {
+            "name": "mixinInstance",
+            "shortname": "mixinInstance",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/instance.js",
+            "line": 68,
+            "description": "mix in instance properties from classes",
+            "static": 1
+        },
+        "mitsubishi": {
+            "name": "mitsubishi",
+            "shortname": "mitsubishi",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/main.js",
+            "line": 40,
+            "description": "mix in instance or prototype methods from classes",
+            "static": 1
+        },
+        "mixinProto": {
+            "name": "mixinProto",
+            "shortname": "mixinProto",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/proto.js",
+            "line": 55,
+            "description": "mix in proto props",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/instance.js",
+            "line": 1,
+            "description": "Check class is static (ie object literal vs constructor fn obj)",
+            "itemtype": "method",
+            "name": "validObjectLiteral",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "the class/js object to check",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "boolean",
+                "type": "Object"
+            },
+            "class": "mixinInstance"
+        },
+        {
+            "file": "lib/instance.js",
+            "line": 14,
+            "description": "copy hasOwn properties from one class to another",
+            "itemtype": "method",
+            "name": "hasOwnPropsMixin",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "the object that you want to gain the extra properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "parent",
+                    "description": "the object that has the properties to give",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the decorated child",
+                "type": "Object"
+            },
+            "class": "mixinInstance"
+        },
+        {
+            "file": "lib/instance.js",
+            "line": 35,
+            "description": "Mix in INSTANCE properties from one class to another class (accepts both dynamic and static classes). Will mix in prototype properties if a dynamic class is passed in.",
+            "itemtype": "method",
+            "name": "instanceSingle",
+            "params": [
+                {
+                    "name": "childClass",
+                    "description": "the child class (dynamic or static) to be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "parentClass",
+                    "description": "the parent class (dynamic or static) that has the properties to be mixed in to the child",
+                    "type": "Class"
+                }
+            ],
+            "return": {
+                "description": "the decorated child class",
+                "type": "Class"
+            },
+            "class": "mixinInstance"
+        },
+        {
+            "file": "lib/instance.js",
+            "line": 51,
+            "description": "Mix in INSTANCE properties from array of parent classes to a child class. Basically just a for loop around mitsubshi.instanceSingle().",
+            "itemtype": "method",
+            "name": "instanceMulti",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "class that will be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "arrayParents",
+                    "description": "array of parent classes (can be static or dynamic) that will be giving their properties to the new static class",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "decorated child static class",
+                "type": "Object"
+            },
+            "class": "mixinInstance"
+        },
+        {
+            "file": "lib/main.js",
+            "line": 10,
+            "description": "Mix in PROTOTYPE properties from parent class(es) to child class.",
+            "itemtype": "method",
+            "name": "mixinProtoProps",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "class that will be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "parent",
+                    "description": "class(es) (can be static or dynamic) that will be giving their properties to the new static class",
+                    "type": "Class|Array"
+                }
+            ],
+            "return": {
+                "description": "decorated child static class",
+                "type": "Object"
+            },
+            "class": "mitsubishi"
+        },
+        {
+            "file": "lib/main.js",
+            "line": 25,
+            "description": "Mix in INSTANCE properties from parent class(es) to child class.",
+            "itemtype": "method",
+            "name": "mixinInstanceProps",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "class that will be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "parent",
+                    "description": "class(es) (can be static or dynamic) that will be giving their properties to the new static class",
+                    "type": "Class|Array"
+                }
+            ],
+            "return": {
+                "description": "decorated child static class",
+                "type": "Object"
+            },
+            "class": "mitsubishi"
+        },
+        {
+            "file": "lib/proto.js",
+            "line": 1,
+            "description": "Check whether an class is static or dynamic (ie object literal vs constructor fn obj)",
+            "itemtype": "method",
+            "name": "returnPrototypeIfDynamicClass",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "the class/js object to check",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "if a contructor then return its prototpe else return the obj literal unmodified",
+                "type": "Object"
+            },
+            "class": "mixinProto"
+        },
+        {
+            "file": "lib/proto.js",
+            "line": 15,
+            "description": "Mix in PROTOTYPE properties from one class to another class (accepts both dynamic and static classes). Will mix in static properties if a static class is passed in, otherwise mixes in prototype methods.",
+            "itemtype": "method",
+            "name": "propsSingle",
+            "params": [
+                {
+                    "name": "childClass",
+                    "description": "the child class (dynamic or static) to be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "parentClass",
+                    "description": "the parent class (dynamic or static) that has the properties to be mixed in to the child",
+                    "type": "Class"
+                },
+                {
+                    "name": "staticProps",
+                    "description": "extra properties to mix in",
+                    "type": "[Object]"
+                }
+            ],
+            "return": {
+                "description": "the decorated child class",
+                "type": "Class"
+            },
+            "class": "mixinProto"
+        },
+        {
+            "file": "lib/proto.js",
+            "line": 38,
+            "description": "Mix in PROTOTYPE properties from array of parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().",
+            "itemtype": "method",
+            "name": "propsMulti",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "class that will be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "arrayParents",
+                    "description": "array of parent classes (can be static or dynamic) that will be giving their properties to the new static class",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "decorated child static class",
+                "type": "Object"
+            },
+            "class": "mixinProto"
+        }
+    ],
+    "warnings": []
+}

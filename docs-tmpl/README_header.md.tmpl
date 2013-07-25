@@ -1,0 +1,67 @@
+# <!-- @echo name -->
+
+[![Build Status](https://secure.travis-ci.org/techjacker/<!-- @echo name -->.png)](http://travis-ci.org/techjacker/<!-- @echo name -->)
+
+[![Sauce Labs Browser Test Status](https://saucelabs.com/buildstatus/berni_test_os<!-- @echo name -->)](https://saucelabs.com/u/<!-- @echo name -->)
+[![Sauce Labs Browser Test Status](https://saucelabs.com/browser-matrix/<!-- @echo name -->.svg)](https://saucelabs.com/u/<!-- @echo name -->)
+
+
+- <!-- @echo description -->
+
+
+### Install
+
+#### Node
+
+```Shell
+npm install <!-- @echo name -->
+```
+
+#### Browser
+
+##### Component.js
+
+```Shell
+component install <!-- @echo name -->
+```
+##### Bower
+
+```Shell
+bower install <!-- @echo name -->
+```
+
+
+## Examples
+
+#### <!-- @echo name -->.mixinInstanceProps(class, [classes])
+
+```JavaScript
+var myStaticClass = {};
+
+/* .mixinInstanceProps() */
+mitsubishi.mixinInstanceProps(myStaticClass, [{hello:true}, {world:true}]);
+
+console.log('myStaticClass', myStaticClass);
+// outputs: {{hello:true, world:true}
+```
+
+#### <!-- @echo name -->.mixinProtoProps(class, [classes])
+
+```JavaScript
+var myDynamicClass = function () {};
+var parentDynamicClass = function () {};
+
+parentDynamicClass.prototype.awesome = blah;
+
+mitsubishi.mixinProtoProps(myDynamicClass, [(new parentDynamicClass), {world:true}]);
+
+console.log('myDynamicClass', myDynamicClass);
+// outputs: {{awesome:"blah", world:true}
+```
+
+
+### Docs
+[Yuidocs documentation here](docs/index.html)
+- fire up the connect server ```$ grunt docs```
+- navigate your browser to the [docs](http://localhost:9001)
+

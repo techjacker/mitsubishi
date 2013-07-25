@@ -1,0 +1,26 @@
+{
+  "name": "mitsubishi",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "Extend function inspired by YUI, coffeescript, typescript and google closure inheritance patterns.",
+  "keywords": [
+    "mixin",
+    "class",
+    "inheritance",
+    "inherits"
+  ],
+  "repo": "techjacker/mitsubishi",
+  "dependencies": {},
+  "development": {
+    "visionmedia/mocha": "*",
+    "techjacker/expect.js": "*"
+  },
+  "main": "lib/main.js",
+  "scripts": [
+    "lib/main.js",
+    "lib/instance.js",
+    "lib/proto.js"
+  ],
+  "demo": "",
+  "styles": []
+}
