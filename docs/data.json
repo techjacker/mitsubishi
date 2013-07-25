@@ -1,8 +1,8 @@
 {
     "project": {
         "name": "mitsubishi",
-        "description": "Extend function inspired by YUI, coffeescript, typescript and google closure inheritance patterns.",
-        "version": "0.0.1",
+        "description": "Mixin utilities for extending prototypes",
+        "version": "0.0.3",
         "url": "git@github.com:techjacker/mitsubishi.git"
     },
     "files": {

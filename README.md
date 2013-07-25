@@ -2,11 +2,11 @@
 
 [![Build Status](https://secure.travis-ci.org/techjacker/mitsubishi.png)](http://travis-ci.org/techjacker/mitsubishi)
 
-[![Sauce Labs Browser Test Status](https://saucelabs.com/buildstatus/berni_test_osmitsubishi)](https://saucelabs.com/u/mitsubishi)
+[![Sauce Labs Browser Test Status](https://saucelabs.com/buildstatus/mitsubishi)](https://saucelabs.com/u/mitsubishi)
 [![Sauce Labs Browser Test Status](https://saucelabs.com/browser-matrix/mitsubishi.svg)](https://saucelabs.com/u/mitsubishi)
 
 
-- Extend function inspired by YUI, coffeescript, typescript and google closure inheritance patterns.
+- Mixin utilities for extending prototypes
 
 
 ### Install
@@ -23,11 +23,6 @@ npm install mitsubishi
 
 ```Shell
 component install mitsubishi
-```
-##### Bower
-
-```Shell
-bower install mitsubishi
 ```
 
 

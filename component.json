@@ -1,8 +1,8 @@
 {
   "name": "mitsubishi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
-  "description": "Extend function inspired by YUI, coffeescript, typescript and google closure inheritance patterns.",
+  "description": "Mixin utilities for extending prototypes",
   "keywords": [
     "mixin",
     "class",
