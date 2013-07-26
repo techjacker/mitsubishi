@@ -24,7 +24,7 @@ npm install mitsubishi
 ```Shell
 component install mitsubishi
 ```
-enab
+
 
 ## Examples
 
@@ -76,28 +76,28 @@ done();
 ##### mitsubishi.mixinInstanceProps() - copy instance properties from instantiated dynamic classes as well as object literals.
 
 ```js
-expect(##### mitsubishi.mixinInstanceProps({}, [fixtures.A, fixtures.C])).to.only.have.keys('foo', 'bar', 'marbel');
-expect(##### mitsubishi.mixinInstanceProps({}, [fixtures.A, fixtures.B])).to.only.have.keys('foo', 'bar');
-expect(##### mitsubishi.mixinInstanceProps({}, fixtures.A)).to.only.have.keys('foo', 'bar');
-expect(##### mitsubishi.mixinInstanceProps({}, [fixtures.A, (new fixtures.B)])).to.only.have.keys('foo', 'bar', 'blah');
-expect(##### mitsubishi.mixinInstanceProps({}, [(new fixtures.B), fixtures.C])).to.only.have.keys('blah', 'marbel');
+expect(mitsubishi.mixinInstanceProps({}, [fixtures.A, fixtures.C])).to.only.have.keys('foo', 'bar', 'marbel');
+expect(mitsubishi.mixinInstanceProps({}, [fixtures.A, fixtures.B])).to.only.have.keys('foo', 'bar');
+expect(mitsubishi.mixinInstanceProps({}, fixtures.A)).to.only.have.keys('foo', 'bar');
+expect(mitsubishi.mixinInstanceProps({}, [fixtures.A, (new fixtures.B)])).to.only.have.keys('foo', 'bar', 'blah');
+expect(mitsubishi.mixinInstanceProps({}, [(new fixtures.B), fixtures.C])).to.only.have.keys('blah', 'marbel');
 done();
 ```
 
 ##### mitsubishi.mixinProtoPropsMulti() - copy poto properties from dynamic classes (if instantiated) as well as object literals.
 
 ```js
-expect(##### mitsubishi.mixinProtoProps({}, [fixtures.A, fixtures.C])).to.have.key('foo', 'bar', 'marbel');
-expect(##### mitsubishi.mixinProtoProps({}, [(new fixtures.B()), fixtures.C])).to.have.key('marbel');
-expect(##### mitsubishi.mixinProtoProps({}, (new fixtures.B()))).to.have.key('protoproperty');
+expect(mitsubishi.mixinProtoProps({}, [fixtures.A, fixtures.C])).to.have.key('foo', 'bar', 'marbel');
+expect(mitsubishi.mixinProtoProps({}, [(new fixtures.B()), fixtures.C])).to.have.key('marbel');
+expect(mitsubishi.mixinProtoProps({}, (new fixtures.B()))).to.have.key('protoproperty');
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 // MUST BE AN INSTANCE OF A DYNAMIC CLASS
 // to add a prototype of an uninstantiated dynamic class then use mixinInstanceProps and   //
 // directly reference its prototype
 /////////////////////////////////////////////////////////////////////////////////////////////
-expect(##### mitsubishi.mixinProtoProps({}, fixtures.B)).to.not.have.key('protoproperty');
-expect(##### mitsubishi.mixinInstanceProps({}, fixtures.B.prototype)).to.have.key('protoproperty');
+expect(mitsubishi.mixinProtoProps({}, fixtures.B)).to.not.have.key('protoproperty');
+expect(mitsubishi.mixinInstanceProps({}, fixtures.B.prototype)).to.have.key('protoproperty');
 done();
 ```
 

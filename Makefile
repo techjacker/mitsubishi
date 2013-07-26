@@ -62,15 +62,19 @@ components: component.json
 
 ######################################
 # Docs
+# run grunt readme
 ######################################
-readme:
+readme: readme-footer
+	@grunt readme-concat
+
+readme-footer:
 	@[ -d $(TMPL_DIR) ] || mkdir $(TMPL_DIR)
 	@make test-node REPORTER=markdown \
 		| tail -n +2 \
 		| head -n -2 \
 		| sed 's/\# /\#\#\# /g' \
 		| sed 's/TOC/API/g' \
-		| sed 's/mitsubishi\./#\#\#\#\# mitsubishi\./g' \
+		| sed 's/^mitsubishi\./#\#\#\#\# mitsubishi\./g' \
 		| cat > $(TMPL_DIR)/$(MOCHA_MD_DOCS)
 	@echo '' >> $(TMPL_DIR)/$(MOCHA_MD_DOCS)
 	@echo '## License' >> $(TMPL_DIR)/$(MOCHA_MD_DOCS)

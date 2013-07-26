@@ -1,6 +1,6 @@
 {
   "name": "mitsubishi",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "description": "Mixin utilities for extending prototypes",
   "keywords": [

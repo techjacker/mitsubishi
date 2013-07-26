@@ -176,25 +176,36 @@ module.exports = function(grunt) {
 	/*--------------------------------------
 	Readme custom task
 	---------------------------------------*/
+	grunt.registerTask("readme-concat", ["preprocess:readme", "concat", "clean"]);
+	// keep in here for the watch task
 	grunt.registerTask('readme', 'Concatenate readme docs', function() {
-
 		var done = this.async();
 		var exec = require('child_process').exec;
-
 		exec('make readme', function(error, stdout, stderr) {
-
-			error && console.error('make readme error: ' + error);
-			grunt.task.run(["preprocess:readme", "concat", "clean"]);
 			done();
-
-			// exec('make clean-readme', function(error, stdout, stderr) {
-			// 	error && console.error('make readme error: ' + error);
-			// 	done();
-			// });
-
 		});
-
 	});
+
+
+	// grunt.registerTask('readme', 'Concatenate readme docs', function() {
+
+	// 	var done = this.async();
+	// 	var exec = require('child_process').exec;
+
+	// 	exec('make readme', function(error, stdout, stderr) {
+
+	// 		error && console.error('make readme error: ' + error);
+	// 		grunt.task.run(["readme-concat"]);
+	// 		done();
+
+	// 		// exec('make clean-readme', function(error, stdout, stderr) {
+	// 		// 	error && console.error('make readme error: ' + error);
+	// 		// 	done();
+	// 		// });
+
+	// 	});
+
+	// });
 
 	///////////////////////////
 	// Loading dependencies  //
