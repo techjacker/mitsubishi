@@ -37,10 +37,10 @@ test-node: npm-install-dev
 		$(TEST_FILES)
 
 test-saucelabs: npm-install-dev components
-	@grunt test-saucelabs
+	@grunt test
 
 test-browser: npm-install-dev components
-	@grunt connect:keepalive
+	@grunt connect:servermanualtest
 	@echo go to http://localhost:8080/test
 
 npm-install-dev: package.json

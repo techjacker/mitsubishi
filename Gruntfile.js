@@ -24,10 +24,6 @@ module.exports = function(grunt) {
 				platform: 'VISTA',
 				version: '9'
 			}, {
-			// 	browserName: 'internet explorer',
-			// 	platform: 'XP',
-			// 	version: '8'
-			// }, {
 				browserName: 'firefox',
 				version: '23',
 				platform: 'WIN7'
@@ -73,33 +69,24 @@ module.exports = function(grunt) {
 				platform: 'OS X 10.6',
 				version: '5.0'
 			}, {
-			// 	browserName: 'ANDROID',
-			// 	platform: 'Linux',
-			// 	version: '4.0'
-			// }, {
-			// 	browserName: 'ANDROID',
-			// 	platform: 'Linux',
-			// 	version: '4.0',
-			// 	'device-type':'tablet'
-			// }, {
 				browserName: 'opera',
 				platform: 'Windows 2008',
 				version: '12'
-		}];
-	npmConfig = grunt.file.readJSON('package.json');
+		}],
+		processReadmeHeaderSrc          = docsTmplDir + '/README_header.md.tmpl',
+		processReadmeHeaderDestination  = docsTmplDir + '/README_header.md',
+		processLicenseSrc               = docsTmplDir + '/LICENSE.tmpl',
+		processLicenseDestination       = 'LICENSE',
+		npmConfig 						= grunt.file.readJSON('package.json'),
+		filesPreProcess 				= {};
+
 	npmConfig.year = grunt.template.today('yyyy');
+	filesPreProcess[docsTmplDir + '/README_header.md'] = docsTmplDir + '/README_header.md.tmpl';
+	filesPreProcess[docsTmplDir + '/LICENSE.tmpl'] = 'LICENSE';
+
 	/////////////////////////////
 	// Project configuration.  //
 	/////////////////////////////
-    var processReadmeHeaderSrc         = docsTmplDir + '/README_header.md.tmpl',
-        processReadmeHeaderDestination = docsTmplDir + '/README_header.md',
-        processLicenseSrc              = docsTmplDir + '/LICENSE.tmpl',
-        processLicenseDestination      = 'LICENSE';
-
-    var filesPreProcess = {};
-    filesPreProcess[docsTmplDir + '/README_header.md'] = docsTmplDir + '/README_header.md.tmpl';
-    filesPreProcess[docsTmplDir + '/LICENSE.tmpl'] = 'LICENSE';
-
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		preprocess: {
@@ -126,10 +113,17 @@ module.exports = function(grunt) {
 			}
 		},
 		connect: {
-			server: {
+			saucelabs: {
 				options: {
 					base: '.',
 					port: 8080
+				}
+			},
+			servermanualtest: {
+				options: {
+					base: '.',
+					keepalive: true,
+					port: 9090
 				}
 			}
 		},
@@ -212,7 +206,7 @@ module.exports = function(grunt) {
 	// register tasks
 	grunt.registerTask("template", ["preprocess:readme"]);
 	grunt.registerTask("docs", ["connect", "yuidoc"]);
-	grunt.registerTask("test-saucelabs", ["connect", "saucelabs-mocha"]);
+	grunt.registerTask("test", ["connect:saucelabs", "saucelabs-mocha"]);
 	grunt.registerTask("default", ["connect", "watch"]);
 	grunt.registerTask("build", tasksBuild);
 };

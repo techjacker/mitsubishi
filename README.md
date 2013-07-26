@@ -1,12 +1,12 @@
 # mitsubishi
 
+Mixin utilities for extending prototypes
+
+
 [![Build Status](https://secure.travis-ci.org/techjacker/mitsubishi.png)](http://travis-ci.org/techjacker/mitsubishi)
 
 [![Sauce Labs Browser Test Status](https://saucelabs.com/buildstatus/mitsubishi)](https://saucelabs.com/u/mitsubishi)
 [![Sauce Labs Browser Test Status](https://saucelabs.com/browser-matrix/mitsubishi.svg)](https://saucelabs.com/u/mitsubishi)
-
-
-- Mixin utilities for extending prototypes
 
 
 ### Install
@@ -24,7 +24,7 @@ npm install mitsubishi
 ```Shell
 component install mitsubishi
 ```
-
+enab
 
 ## Examples
 

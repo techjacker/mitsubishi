@@ -2,7 +2,7 @@
     "project": {
         "name": "mitsubishi",
         "description": "Mixin utilities for extending prototypes",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "url": "git@github.com:techjacker/mitsubishi.git"
     },
     "files": {
