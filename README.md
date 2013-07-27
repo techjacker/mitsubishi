@@ -19,14 +19,12 @@ npm install mitsubishi
 
 #### Browser
 
-##### Component.js
-
 ```Shell
 component install mitsubishi
 ```
 
 
-## Examples
+## Usage
 
 #### mitsubishi.mixinInstanceProps(class, [classes])
 

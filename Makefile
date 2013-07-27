@@ -14,7 +14,7 @@ BUILD_STANDALONE_MIN = $(BUILD_STANDALONE:.js=.min.js)
 COMPONENTJS_CMD = @component build --out $(@D) --name $(basename $(@F))
 
 ######################################
-# Relase
+# Release
 ######################################
 publish: clean build docs test-node lint
 
@@ -40,8 +40,8 @@ test-saucelabs: npm-install-dev components
 	@grunt test
 
 test-browser: npm-install-dev components
-	@grunt connect:servermanualtest
-	@echo go to http://localhost:8080/test
+	@serve
+	@echo go to http://localhost:3000/test
 
 npm-install-dev: package.json
 	@npm install

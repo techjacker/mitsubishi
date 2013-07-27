@@ -16,6 +16,14 @@ module.exports = function(grunt) {
 		tasksTest = ["connect", "saucelabs-mocha"],
 		tasksWatch = tasksBuild.concat(['jshint']),
 		browsers = [{
+			// 	browserName: 'internet explorer',
+			// 	platform: 'XP',
+			// 	version: '8'
+			// }, {
+			// 	browserName: 'internet explorer',
+			// 	platform: 'XP',
+			// 	version: '7'
+			// }, {
 				browserName: 'internet explorer',
 				platform: 'WIN8',
 				version: '10'
@@ -185,27 +193,6 @@ module.exports = function(grunt) {
 			done();
 		});
 	});
-
-
-	// grunt.registerTask('readme', 'Concatenate readme docs', function() {
-
-	// 	var done = this.async();
-	// 	var exec = require('child_process').exec;
-
-	// 	exec('make readme', function(error, stdout, stderr) {
-
-	// 		error && console.error('make readme error: ' + error);
-	// 		grunt.task.run(["readme-concat"]);
-	// 		done();
-
-	// 		// exec('make clean-readme', function(error, stdout, stderr) {
-	// 		// 	error && console.error('make readme error: ' + error);
-	// 		// 	done();
-	// 		// });
-
-	// 	});
-
-	// });
 
 	///////////////////////////
 	// Loading dependencies  //
