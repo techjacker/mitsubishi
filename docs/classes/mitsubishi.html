@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.6</em>
+            <em>API Docs for: 1.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -94,7 +94,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/lib_main.js.html#l40"><code>lib&#x2F;main.js:40</code></a>
+            Defined in: <a href="../files/lib_main.js.html#l56"><code>lib&#x2F;main.js:56</code></a>
         </div>
     
 
@@ -135,14 +135,21 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_mixinInstanceProps">mixinInstanceProps</a>
+                                <a href="#method_instancePropsFromInstantiated">instancePropsFromInstantiated</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_mixinProtoProps">mixinProtoProps</a>
+                                <a href="#method_protoPropsFromInstantiated">protoPropsFromInstantiated</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_protoPropsFromInstantiated">protoPropsFromInstantiated</a>
 
                                 
                                 
@@ -164,8 +171,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_mixinInstanceProps" class="method item">
-    <h3 class="name"><code>mixinInstanceProps</code></h3>
+                    <div id="method_instancePropsFromInstantiated" class="method item">
+    <h3 class="name"><code>instancePropsFromInstantiated</code></h3>
 
     
         <div class="args">
@@ -216,7 +223,7 @@
             
         
         
-        <a href="../files/lib_main.js.html#l25"><code>lib&#x2F;main.js:25</code></a>
+        <a href="../files/lib_main.js.html#l41"><code>lib&#x2F;main.js:41</code></a>
         
         </p>
 
@@ -293,8 +300,8 @@
 </div>
 
                 
-                    <div id="method_mixinProtoProps" class="method item">
-    <h3 class="name"><code>mixinProtoProps</code></h3>
+                    <div id="method_protoPropsFromInstantiated" class="method item">
+    <h3 class="name"><code>protoPropsFromInstantiated</code></h3>
 
     
         <div class="args">
@@ -356,7 +363,136 @@
     </div>
 
     <div class="description">
-        <p>Mix in PROTOTYPE properties from parent class(es) to child class.</p>
+        <p>Mix in PROTOTYPE properties from parent INSTANTIATED class(es) to child class.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">child</code>
+                        <span class="type">Class</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>class that will be decorated</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">parent</code>
+                        <span class="type">Class | Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>class(es) (can be static or dynamic) that will be giving their properties to the new static class</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>decorated child static class</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_protoPropsFromInstantiated" class="method item">
+    <h3 class="name"><code>protoPropsFromInstantiated</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>child</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>parent</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_main.js.html#l25"><code>lib&#x2F;main.js:25</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Mix in PROTOTYPE properties from parent UNinstantiated class(es) to child class.</p>
 
     </div>
 

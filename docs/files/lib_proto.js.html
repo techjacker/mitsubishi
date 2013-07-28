@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.6</em>
+            <em>API Docs for: 1.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -128,7 +128,7 @@ var propsSingle = function(childClass, parentClass) {
 
 
 /**
- * Mix in PROTOTYPE properties from array of parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().
+ * Mix in PROTOTYPE properties from array of INSTANTIATED parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().
  *
  * @method propsMulti
  *
@@ -144,6 +144,44 @@ var propsMulti = function(childClass, arrayParents) {
 	return childClass;
 };
 
+/*--------------------------------------
+Uninsantiated Dynamic Classes (ie not Obj Literals)
+---------------------------------------*/
+var returnPrototypeIfUninstantiated = function (item) {
+	var objLiteral = (item.constructor === Object.prototype.constructor);
+
+	return item.prototype;
+	return objLiteral ? item : item.prototype;
+};
+
+var propsUninstantiatedSingle = function(childClass, parentClass) {
+	var objClass = returnPrototypeIfUninstantiated(parentClass);
+	for (var key in objClass) {
+		childClass[key] = objClass[key];
+	}
+	return childClass;
+};
+
+
+/**
+ * Mix in PROTOTYPE properties from array of UNinstantiated parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().
+ *
+ * @method propsUninstantiatedMulti
+ *
+ * @param  {Class} child class that will be decorated
+ * @param  {Array} arrayParents array of parent classes (can be static or dynamic) that will be giving their properties to the new static class
+ *
+ * @return {Object}             decorated child static class
+ */
+var propsUninstantiatedMulti = function(childClass, arrayParents) {
+	for (var i = arrayParents.length - 1; i &gt;= 0; i--) {
+		propsUninstantiatedSingle(childClass, arrayParents[i]);
+	}
+	return childClass;
+};
+
+
+
 /**
  * mix in proto props
  *
@@ -153,7 +191,9 @@ var propsMulti = function(childClass, arrayParents) {
 var mixinProto = {
 	&quot;returnPrototypeIfDynamicClass&quot;: returnPrototypeIfDynamicClass,
 	&quot;propsSingle&quot;: propsSingle,
-	&quot;propsMulti&quot;: propsMulti
+	&quot;propsMulti&quot;: propsMulti,
+	&quot;propsUninstantiatedSingle&quot;: propsUninstantiatedSingle,
+	&quot;propsUninstantiatedMulti&quot;: propsUninstantiatedMulti
 };
 
 if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {

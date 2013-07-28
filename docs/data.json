@@ -2,7 +2,7 @@
     "project": {
         "name": "mitsubishi",
         "description": "Mixin utilities for extending prototypes",
-        "version": "0.0.6",
+        "version": "1.0.0",
         "url": "git@github.com:techjacker/mitsubishi.git"
     },
     "files": {
@@ -58,7 +58,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib/main.js",
-            "line": 40,
+            "line": 56,
             "description": "mix in instance or prototype methods from classes",
             "static": 1
         },
@@ -71,7 +71,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib/proto.js",
-            "line": 55,
+            "line": 93,
             "description": "mix in proto props",
             "static": 1
         }
@@ -171,9 +171,9 @@
         {
             "file": "lib/main.js",
             "line": 10,
-            "description": "Mix in PROTOTYPE properties from parent class(es) to child class.",
+            "description": "Mix in PROTOTYPE properties from parent INSTANTIATED class(es) to child class.",
             "itemtype": "method",
-            "name": "mixinProtoProps",
+            "name": "protoPropsFromInstantiated",
             "params": [
                 {
                     "name": "child",
@@ -195,9 +195,33 @@
         {
             "file": "lib/main.js",
             "line": 25,
+            "description": "Mix in PROTOTYPE properties from parent UNinstantiated class(es) to child class.",
+            "itemtype": "method",
+            "name": "protoPropsFromInstantiated",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "class that will be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "parent",
+                    "description": "class(es) (can be static or dynamic) that will be giving their properties to the new static class",
+                    "type": "Class|Array"
+                }
+            ],
+            "return": {
+                "description": "decorated child static class",
+                "type": "Object"
+            },
+            "class": "mitsubishi"
+        },
+        {
+            "file": "lib/main.js",
+            "line": 41,
             "description": "Mix in INSTANCE properties from parent class(es) to child class.",
             "itemtype": "method",
-            "name": "mixinInstanceProps",
+            "name": "instancePropsFromInstantiated",
             "params": [
                 {
                     "name": "child",
@@ -267,9 +291,33 @@
         {
             "file": "lib/proto.js",
             "line": 38,
-            "description": "Mix in PROTOTYPE properties from array of parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().",
+            "description": "Mix in PROTOTYPE properties from array of INSTANTIATED parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().",
             "itemtype": "method",
             "name": "propsMulti",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "class that will be decorated",
+                    "type": "Class"
+                },
+                {
+                    "name": "arrayParents",
+                    "description": "array of parent classes (can be static or dynamic) that will be giving their properties to the new static class",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "decorated child static class",
+                "type": "Object"
+            },
+            "class": "mixinProto"
+        },
+        {
+            "file": "lib/proto.js",
+            "line": 74,
+            "description": "Mix in PROTOTYPE properties from array of UNinstantiated parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().",
+            "itemtype": "method",
+            "name": "propsUninstantiatedMulti",
             "params": [
                 {
                     "name": "child",

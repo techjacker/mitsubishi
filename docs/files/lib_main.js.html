@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.6</em>
+            <em>API Docs for: 1.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -100,31 +100,47 @@ var checkIsArray = function (arr) {
 };
 
 /**
- * Mix in PROTOTYPE properties from parent class(es) to child class.
+ * Mix in PROTOTYPE properties from parent INSTANTIATED class(es) to child class.
  *
- * @method mixinProtoProps
+ * @method protoPropsFromInstantiated
  *
  * @param  {Class} child class that will be decorated
  * @param  {Class|Array} parent class(es) (can be static or dynamic) that will be giving their properties to the new static class
  *
  * @return {Object}             decorated child static class
  */
-var mixinProtoProps = function(childClass, parents) {
+var protoPropsFromInstantiated = function(childClass, parents) {
 	return (checkIsArray(parents)) ? mixinProto.propsMulti(childClass, parents) : mixinProto.propsSingle(childClass, parents);
 };
 
 
 /**
- * Mix in INSTANCE properties from parent class(es) to child class.
+ * Mix in PROTOTYPE properties from parent UNinstantiated class(es) to child class.
  *
- * @method mixinInstanceProps
+ * @method protoPropsFromInstantiated
  *
  * @param  {Class} child class that will be decorated
  * @param  {Class|Array} parent class(es) (can be static or dynamic) that will be giving their properties to the new static class
  *
  * @return {Object}             decorated child static class
  */
-var mixinInstanceProps = function(childClass, parents) {
+var protoPropsFromUninstantiated = function(childClass, parents) {
+	return (checkIsArray(parents)) ? mixinProto.propsUninstantiatedMulti(childClass, parents) : mixinProto.propsUninstantiatedSingle(childClass, parents);
+};
+
+
+
+/**
+ * Mix in INSTANCE properties from parent class(es) to child class.
+ *
+ * @method instancePropsFromInstantiated
+ *
+ * @param  {Class} child class that will be decorated
+ * @param  {Class|Array} parent class(es) (can be static or dynamic) that will be giving their properties to the new static class
+ *
+ * @return {Object}             decorated child static class
+ */
+var instancePropsFromInstantiated = function(childClass, parents) {
 	return (checkIsArray(parents)) ? mixinInstance.instanceMulti(childClass, parents) : mixinInstance.instanceSingle(childClass, parents);
 };
 
@@ -136,8 +152,9 @@ var mixinInstanceProps = function(childClass, parents) {
  * @static
  */
 var mitsubishi = {
-	&quot;mixinInstanceProps&quot;: mixinInstanceProps,
-	&quot;mixinProtoProps&quot;: mixinProtoProps,
+	&quot;instancePropsFromInstantiated&quot;: instancePropsFromInstantiated,
+	&quot;protoPropsFromInstantiated&quot;: protoPropsFromInstantiated,
+	&quot;protoPropsFromUninstantiated&quot;: protoPropsFromUninstantiated
 };
 
 // console.error(&#x27;mitsubishi&#x27;, mitsubishi);
