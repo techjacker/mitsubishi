@@ -59,10 +59,14 @@ describe('mitsubishi', function () {
 
 
 	it('mitsubishi.protoPropsFromUninstantiated() - copy poto properties from dynamic classes (if UNinstantiated) as well as object literals', function (done) {
+
+		// dynamic classes
 		var res = function () {};
-		mitsubishi.protoPropsFromUninstantiated(res.prototype, fixtures.B);
+		 mitsubishi.protoPropsFromUninstantiated(res.prototype, fixtures.B);
 		expect(res.prototype).to.have.key('protoproperty');
-		// expect(mitsubishi.protoPropsFromUninstantiated({}, fixtures.B)).prototype.to.have.key('protoproperty');
+
+		// works with object literals too
+		expect(mitsubishi.protoPropsFromUninstantiated({}, fixtures.B)).to.have.key('protoproperty');
 		done();
 	});
 

@@ -9,18 +9,13 @@
 	<body>
 		<div id="mocha"></div>
 
-		<!-- load test libs
-		<script src="/test/libs/mocha.js"></script>
-		<script src="/test/libs/expect.js"></script>
-	-->
+		<!-- load test libs	-->
 		<script src="/components/visionmedia-mocha/mocha.js"></script>
 		<script src="/components/techjacker-expect.js/expect.js"></script>
 		<script>mocha.setup('bdd');</script>
 
 		<!-- load module -->
-		<script src="/lib/main.js"></script>
-		<script src="/lib/instance.js"></script>
-		<script src="/lib/proto.js"></script>
+		<script src="/build/mitsubishi.js"></script>
 
 		<!-- load specs	-->
 		<script src="/test/main.test.js"></script>

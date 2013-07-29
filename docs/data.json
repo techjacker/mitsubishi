@@ -2,7 +2,7 @@
     "project": {
         "name": "mitsubishi",
         "description": "Mixin utilities for extending prototypes",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "url": "git@github.com:techjacker/mitsubishi.git"
     },
     "files": {
@@ -71,7 +71,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "lib/proto.js",
-            "line": 93,
+            "line": 92,
             "description": "mix in proto props",
             "static": 1
         }
@@ -314,7 +314,7 @@
         },
         {
             "file": "lib/proto.js",
-            "line": 74,
+            "line": 73,
             "description": "Mix in PROTOTYPE properties from array of UNinstantiated parent classes to a child class. Basically just a for loop around mitsubshi.propsSingle().",
             "itemtype": "method",
             "name": "propsUninstantiatedMulti",

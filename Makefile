@@ -13,6 +13,7 @@ BUILD_STANDALONE = $(BUILD_DIR)/$(MOD_NAME).js
 BUILD_STANDALONE_MIN = $(BUILD_STANDALONE:.js=.min.js)
 COMPONENTJS_CMD = @component build --out $(@D) --name $(basename $(@F))
 
+
 ######################################
 # Release
 ######################################
@@ -39,7 +40,7 @@ test-node: npm-install-dev
 test-saucelabs: npm-install-dev components
 	@grunt test
 
-test-browser: npm-install-dev components
+server test-browser: npm-install-dev components
 	@serve
 	@echo go to http://localhost:3000/test
 
@@ -94,4 +95,4 @@ clean: clean-readme
 clean-readme:
 	@find $(TMPL_DIR) -maxdepth 1 -type f ! -iname '*.tmpl' -delete
 
-.PHONY: readme clean npm-install-dev release test test-* size
+.PHONY: readme clean npm-install-dev release test test-* size server
