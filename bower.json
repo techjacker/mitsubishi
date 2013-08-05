@@ -1,0 +1,20 @@
+{
+  "name": "mitsubishi",
+  "version": "1.1.1",
+  "description": "Mixin utilities for extending prototypes",
+  "main": "build/mitsubishi.js",
+  "licenses": [{"type": "MIT"}],
+  "author": {
+    "name": "Andrew Griffiths",
+    "email": "mail@andrewgriffithsonline.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:techjacker/mitsubishi.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "visionmedia/mocha": "*",
+    "techjacker/expect.js": "*"
+  }
+}
