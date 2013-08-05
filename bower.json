@@ -1,6 +1,6 @@
 {
   "name": "mitsubishi",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "Mixin utilities for extending prototypes",
   "main": "build/mitsubishi.js",
   "licenses": [{"type": "MIT"}],

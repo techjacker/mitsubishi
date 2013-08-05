@@ -1,8 +1,5 @@
+### npm
 node_modules
-temp.js
-.sauce_connect.log*
-*.sublime*
-*.log*
 
 ### component.js
 components
@@ -10,3 +7,13 @@ components-private
 
 ### bower
 bower_components
+
+### misc
+temp.js
+
+### logfiles
+.sauce_connect.log*
+*.log*
+
+### sublime project
+*.sublime*

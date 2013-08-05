@@ -29,19 +29,23 @@ bower install <!-- @echo name -->
 
 ## Usage
 
-#### <!-- @echo name -->.mixinInstanceProps(class, [classes])
+#### <!-- @echo name -->.props(class, [classes])
+
+Mixin JUST instance props (not proto props) from Obj literals + Classes.
 
 ```JavaScript
 var myStaticClass = {};
 
 /* .mixinInstanceProps() */
-mitsubishi.mixinInstanceProps(myStaticClass, [{hello:true}, {world:true}]);
+mitsubishi.props(myStaticClass, [{hello:true}, {world:true}]);
 
 console.log('myStaticClass', myStaticClass);
 // outputs: {{hello:true, world:true}
 ```
 
-#### <!-- @echo name -->.mixinProtoProps(class, [classes])
+#### <!-- @echo name -->.proto(class, [classes])
+
+Mixin proto props of UNinstantiated Classes (and Obj literals) NOT instance props
 
 ```JavaScript
 var myDynamicClass = function () {};
@@ -49,10 +53,29 @@ var parentDynamicClass = function () {};
 
 parentDynamicClass.prototype.awesome = blah;
 
-mitsubishi.mixinProtoProps(myDynamicClass, [(new parentDynamicClass), {world:true}]);
+mitsubishi.proto(myDynamicClass, [parentDynamicClass, {world:true}]);
 
 console.log('myDynamicClass', myDynamicClass);
 // outputs: {{awesome:"blah", world:true}
+```
+
+
+#### <!-- @echo name -->.protoInstantiated(class, [classes])
+
+Mixin proto props of INSTANTIATED Classes (and Obj literals) NOT instance props
+
+
+```JavaScript
+var myDynamicClass = function () {};
+var parentDynamicClass = function () {};
+
+parentDynamicClass.prototype.awesome = blah;
+myDynamicClass.hello = true;
+
+mitsubishi.protoInstance(myDynamicClass, [(new parentDynamicClass), {world:true}]);
+
+console.log('myDynamicClass', myDynamicClass);
+// outputs: {{awesome:"blah", world:true, hello:true}
 ```
 
 

@@ -259,9 +259,16 @@ var instancePropsFromInstantiated = function(childClass, parents) {
  * @static
  */
 var mitsubishi = {
-	"instancePropsFromInstantiated": instancePropsFromInstantiated,
-	"protoPropsFromInstantiated": protoPropsFromInstantiated,
-	"protoPropsFromUninstantiated": protoPropsFromUninstantiated
+
+	"proto": protoPropsFromUninstantiated, // Obj literals + Class defs
+	"protoPropsFromUninstantiated": protoPropsFromUninstantiated, // Obj literals + Class defs
+
+	"protoInstantiated": protoPropsFromInstantiated, // Obj literals + Class instances
+	"protoPropsFromInstantiated": protoPropsFromInstantiated, // Obj literals + Class instances
+
+	"props": protoPropsFromInstantiated, // Obj literals + Class instances
+	"instancePropsFromInstantiated": instancePropsFromInstantiated // Obj literal
+
 };
 
 // console.error('mitsubishi', mitsubishi);

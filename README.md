@@ -29,19 +29,23 @@ bower install mitsubishi
 
 ## Usage
 
-#### mitsubishi.mixinInstanceProps(class, [classes])
+#### mitsubishi.props(class, [classes])
+
+Mixin JUST instance props (not proto props) from Obj literals + Classes.
 
 ```JavaScript
 var myStaticClass = {};
 
 /* .mixinInstanceProps() */
-mitsubishi.mixinInstanceProps(myStaticClass, [{hello:true}, {world:true}]);
+mitsubishi.props(myStaticClass, [{hello:true}, {world:true}]);
 
 console.log('myStaticClass', myStaticClass);
 // outputs: {{hello:true, world:true}
 ```
 
-#### mitsubishi.mixinProtoProps(class, [classes])
+#### mitsubishi.proto(class, [classes])
+
+Mixin proto props of UNinstantiated Classes (and Obj literals) NOT instance props
 
 ```JavaScript
 var myDynamicClass = function () {};
@@ -49,10 +53,29 @@ var parentDynamicClass = function () {};
 
 parentDynamicClass.prototype.awesome = blah;
 
-mitsubishi.mixinProtoProps(myDynamicClass, [(new parentDynamicClass), {world:true}]);
+mitsubishi.proto(myDynamicClass, [parentDynamicClass, {world:true}]);
 
 console.log('myDynamicClass', myDynamicClass);
 // outputs: {{awesome:"blah", world:true}
+```
+
+
+#### mitsubishi.protoInstantiated(class, [classes])
+
+Mixin proto props of INSTANTIATED Classes (and Obj literals) NOT instance props
+
+
+```JavaScript
+var myDynamicClass = function () {};
+var parentDynamicClass = function () {};
+
+parentDynamicClass.prototype.awesome = blah;
+myDynamicClass.hello = true;
+
+mitsubishi.protoInstance(myDynamicClass, [(new parentDynamicClass), {world:true}]);
+
+console.log('myDynamicClass', myDynamicClass);
+// outputs: {{awesome:"blah", world:true, hello:true}
 ```
 
 
@@ -70,7 +93,7 @@ console.log('myDynamicClass', myDynamicClass);
 should export all needed API methods.
 
 ```js
-expect(mitsubishi).to.only.have.keys('instancePropsFromInstantiated', 'protoPropsFromInstantiated', 'protoPropsFromUninstantiated');
+expect(mitsubishi).to.only.have.keys('proto', 'protoInstantiated', 'props', 'instancePropsFromInstantiated', 'protoPropsFromInstantiated', 'protoPropsFromUninstantiated');
 done();
 ```
 
@@ -82,6 +105,10 @@ expect(mitsubishi.instancePropsFromInstantiated({}, [fixtures.A, fixtures.B])).t
 expect(mitsubishi.instancePropsFromInstantiated({}, fixtures.A)).to.only.have.keys('foo', 'bar');
 expect(mitsubishi.instancePropsFromInstantiated({}, [fixtures.A, (new fixtures.B)])).to.only.have.keys('foo', 'bar', 'blah');
 expect(mitsubishi.instancePropsFromInstantiated({}, [(new fixtures.B), fixtures.C])).to.only.have.keys('blah', 'marbel');
+
+// doesn't mix in proto props
+expect(mitsubishi.instancePropsFromInstantiated({}, (new fixtures.B()))).to.not.have.key('protoproperty');
+
 done();
 ```
 
@@ -92,13 +119,16 @@ expect(mitsubishi.protoPropsFromInstantiated({}, [fixtures.A, fixtures.C])).to.h
 expect(mitsubishi.protoPropsFromInstantiated({}, [(new fixtures.B()), fixtures.C])).to.have.key('marbel');
 expect(mitsubishi.protoPropsFromInstantiated({}, (new fixtures.B()))).to.have.key('protoproperty');
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
 // MUST BE AN INSTANCE OF A DYNAMIC CLASS
-// to add a prototype of an uninstantiated dynamic class then use instancePropsFromInstantiated and   //
+// to add a prototype of an uninstantiated dynamic class then....
+// use instancePropsFromInstantiated and....
 // directly reference its prototype
 /////////////////////////////////////////////////////////////////////////////////////////////
 expect(mitsubishi.protoPropsFromInstantiated({}, fixtures.B)).to.not.have.key('protoproperty');
 expect(mitsubishi.instancePropsFromInstantiated({}, fixtures.B.prototype)).to.have.key('protoproperty');
+// better to use .protoPropsFromUninstantiated()
+expect(mitsubishi.protoPropsFromUninstantiated({}, fixtures.B)).to.have.key('protoproperty');
 done();
 ```
 
@@ -112,6 +142,20 @@ done();
 // works with object literals too
 		expect(mitsubishi.protoPropsFromUninstantiated({}, fixtures.B)).to.have.key('protoproperty');
 		done();
+```
+
+should not copy instance props when using proto methods.
+
+```js
+fixtures.B.bull = true;
+BInst = new fixtures.B;
+BInst.cow = true;
+// expect(mitsubishi.protoPropsFromUninstantiated({}, BI)).to.not.have.key('bull');
+expect(mitsubishi.protoPropsFromUninstantiated({}, fixtures.B)).to.not.have.key('bull');
+expect(mitsubishi.instancePropsFromInstantiated({}, fixtures.B)).to.have.key('bull');
+expect(mitsubishi.protoPropsFromInstantiated({}, fixtures.B)).to.not.have.key('bull');
+expect(mitsubishi.instancePropsFromInstantiated({}, BInst)).to.have.key('cow');
+expect(mitsubishi.protoPropsFromInstantiated({}, BInst)).to.not.have.key('cow');
 ```
 
 ## License
