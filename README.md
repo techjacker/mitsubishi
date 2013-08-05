@@ -23,6 +23,9 @@ npm install mitsubishi
 component install mitsubishi
 ```
 
+```Shell
+bower install mitsubishi
+```
 
 ## Usage
 
